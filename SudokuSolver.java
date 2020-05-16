@@ -1,5 +1,3 @@
-package temp;
-
 public class SudokuSolver {
     private static final int BOARD_SIZE = 9;
     private static final int[][] BOARD_TO_SOLVE = {
@@ -40,7 +38,7 @@ public class SudokuSolver {
                     for (int number = 1; number <= BOARD_SIZE; number++) {
                         if (isValid(row, col, number)) {
                             board[row][col] = number;
-
+                            
                             if (solve()) {
                                 return true;
                             } else {
@@ -58,7 +56,7 @@ public class SudokuSolver {
     }
 
     private boolean isValid(int row, int column, int number) {
-        return (checkRow(row, number) && checkColumn(column, number) && checkBox(row, column, number));
+        return (!checkRow(row, number) && !checkColumn(column, number) && !checkBox(row, column, number));
     }
 
     private boolean checkRow(int row, int number) {
